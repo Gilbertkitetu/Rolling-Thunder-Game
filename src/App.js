@@ -1,13 +1,23 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Container, Col, Row, Button } from 'react-bootstrap';
-
+import React, { useState } from 'react';
 
 import SirRolling from './components/SirRolling';
 import Rolling from './components/Rolling'
 
 
 function App() {
+const [rollingResult, setRollingResult] = useState(0);
+const [rollingSResult, setRollingSResult] = useState(0);
+
+alert(rollingResult)
+function rollingResultF(result){
+  return result;
+}
+  function computeResults(){
+
+  }
   return (
     <div className="App">
     <Container fluid>
@@ -18,7 +28,7 @@ function App() {
       <Col sm md={2} xs={2}></Col>
 
       <Col sm md={4} xs={4}>
-      <SirRolling />
+      <SirRolling rollingResultF= {rollingResultF}/>
       </Col>
       
        <Col sm md={4} xs={4}>
@@ -31,8 +41,8 @@ function App() {
       <Row>
        <Col md xs>
           <Button variant = "primary" size="lg" style={{ width: "150px", margin: "30px"}}>3</Button>
-          <Button variant="dark" size="lg" style={{ width: "150px", margin: "30px"}}>2</Button>
-          <Button variant="dark" size="lg" style={{ width: "150px", margin: "30px"}}>1</Button>
+          <Button variant="primary" size="lg" style={{ width: "150px", margin: "30px"}}>2</Button>
+          <Button variant="primary" size="lg" style={{ width: "150px", margin: "30px"}}>1</Button>
        </Col>
       </Row>
       </Container>

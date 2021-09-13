@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 
 
 class Rolling extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.rollingResultF = this.rollingResultF.bind(this);
+  // }
   state = {
     list: [
         "0",
@@ -162,6 +166,7 @@ class Rolling extends React.Component {
       result = count;
     } else {
       result = list.length + count;
+      // this.props.rollingResultF(result)
     }
 
     // set state variable to display result
@@ -183,7 +188,7 @@ class Rolling extends React.Component {
 
   render() {
     return (
-      <div className="spinWheel">
+      <Card className="spinWheel">
      
         <span id="selector">&#9660;</span>
         <canvas
@@ -213,7 +218,7 @@ class Rolling extends React.Component {
             <span id="result">{this.state.list[this.state.result]}</span>
           </span>
         </div>
-      </div>
+      </Card>
     );
   }
 }

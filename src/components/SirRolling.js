@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 
 
@@ -183,7 +183,7 @@ class SirRolling extends React.Component {
 
   render() {
     return (
-      <div className="spinWheel">
+      <Card className="spinWheel">
      
         <span id="selector">&#9660;</span>
         <canvas
@@ -213,7 +213,7 @@ class SirRolling extends React.Component {
             <span id="result">{this.state.list[this.state.result]}</span>
           </span>
         </div>
-      </div>
+      </Card>
     );
   }
 }
