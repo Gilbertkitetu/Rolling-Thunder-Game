@@ -10,20 +10,27 @@ import Rolling from './components/Rolling'
 function App() {
   return (
     <div className="App">
-    <Container>
+    <Container fluid>
 
       <h1>Rolling Thunder</h1>
       <Row className="justify-content-md-center">
-      <Col md={4} xs={4}>
+
+      <Col sm md={2} xs={2}></Col>
+
+      <Col sm md={4} xs={4}>
       <SirRolling />
       </Col>
       
-       <Col md={4} xs={4}>
+       <Col sm md={4} xs={4}>
       <Rolling />
       </Col>
-       <Col md={4} xs={4}>
-       </Col>
+      
+       <Col sm md={2} xs={2}></Col>
 
+      </Row>
+      <Row>
+       <Col md xs>
+       </Col>
       </Row>
       </Container>
     </div>
