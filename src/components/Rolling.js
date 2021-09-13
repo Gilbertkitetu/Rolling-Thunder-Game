@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Button } from 'react-bootstrap';
 
 
 
@@ -198,13 +199,13 @@ class Rolling extends React.Component {
         />
 
         {this.state.spinning ? (
-          <button type="button" id="reset" onClick={this.reset}>
+          <Button type="button" id="reset" onClick={this.reset}>
             reset
-          </button>
+          </Button>
         ) : (
-          <button type="button" id="spin" onClick={this.spin}>
+          <Button type="button" id="spin" onClick={this.spin}>
             spin
-          </button>
+          </Button>
         )}
         <div class="display">
           <span id="readout">

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 
 
 import SirRolling from './components/SirRolling';
@@ -30,6 +30,9 @@ function App() {
       </Row>
       <Row>
        <Col md xs>
+          <Button variant = "primary" size="lg" style={{ width: "150px", margin: "30px"}}>3</Button>
+          <Button variant="dark" size="lg" style={{ width: "150px", margin: "30px"}}>2</Button>
+          <Button variant="dark" size="lg" style={{ width: "150px", margin: "30px"}}>1</Button>
        </Col>
       </Row>
       </Container>
