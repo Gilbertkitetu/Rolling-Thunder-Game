@@ -30,7 +30,7 @@ class Rolling extends React.Component {
     ],
    
     radius: 75, // PIXELS
-    rotate: 0, // DEGREES
+    rotate: 180, // DEGREES
     easeOut: 0, // SECONDS
     angle: 0, // RADIANS
     top: null, // INDEX
@@ -184,7 +184,7 @@ class Rolling extends React.Component {
   reset = () => {
     // reset wheel and result
     this.setState({
-      rotate: 0,
+      rotate: 180,
       easeOut: 0,
       result: null,
       spinning: false
@@ -208,18 +208,20 @@ class Rolling extends React.Component {
           }}
         />
 
+       
         {this.state.spinning ? (
           <Button type="button" id="reset" onClick={this.reset}>
             reset
           </Button>
         ) : (
+         
           <Button type="button" id="spin" onClick={this.spin}>
             spin
           </Button>
         )}
         <div class="display">
           <span id="readout">
-            {/* YOU WON:{"  "} */}
+            
             <span id="result">{this.state.list[this.state.result]}</span>
           </span>
         </div>
