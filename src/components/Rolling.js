@@ -111,8 +111,8 @@ class Rolling extends React.Component {
     ctx.lineWidth = radius * 2;
     ctx.strokeStyle = color;
 
-    ctx.font = "17px Arial";
-    ctx.fillStyle = "black";
+    ctx.font = "17px  Valera Round";
+    ctx.fillStyle = "blue";
     ctx.stroke();
 
     ctx.save();
@@ -139,18 +139,18 @@ class Rolling extends React.Component {
     let randomSpin = Math.floor(Math.random() * 900) + 500;
     this.setState({
       rotate: randomSpin,
-      easeOut: 2,
+      easeOut: 3,
       spinning: true
     });
 
     // calcalute result after wheel stops spinning
     setTimeout(() => {
       this.getResult(randomSpin);
-    }, 2000);
+    }, 3000);
   };
 
   getResult = spin => {
-    // find net rotation and add to offset angle
+    // find next rotation and add to offset angle
     // repeat substraction of inner angle amount from total distance traversed
     // use count as an index to find value of result from state list
     const { angle, top, offset, list } = this.state;
@@ -164,16 +164,21 @@ class Rolling extends React.Component {
     let result;
     if (count >= 0) {
       result = count;
+      
     } else {
       result = list.length + count;
+     
       // this.props.rollingResultF(result)
     }
+     
 
     // set state variable to display result
     this.setState({
       net: netRotation,
       result: result
     });
+    
+    this.props.setRollingResult(this.state.list[this.state.result]);
   };
 
   reset = () => {

@@ -11,7 +11,8 @@ function App() {
 const [rollingResult, setRollingResult] = useState(0);
 const [rollingSResult, setRollingSResult] = useState(0);
 
-alert(rollingResult)
+alert(rollingResult);
+alert(rollingSResult)
 function rollingResultF(result){
   return result;
 }
@@ -25,17 +26,23 @@ function rollingResultF(result){
       <h1>Rolling Thunder</h1>
       <Row className="justify-content-md-center">
 
-      <Col sm md={2} xs={2}></Col>
+      <Col sm md={2} xs={2}>
+         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}}>Spin</Button>
+          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
+      </Col>
 
       <Col sm md={4} xs={4}>
-      <SirRolling rollingResultF= {rollingResultF}/>
+      <SirRolling setRollingSResult = { setRollingSResult }/>
       </Col>
       
        <Col sm md={4} xs={4}>
-      <Rolling />
+      <Rolling setRollingResult={ setRollingResult }/>
       </Col>
       
-       <Col sm md={2} xs={2}></Col>
+       <Col sm md={2} xs={2}>
+         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}}>Spin</Button>
+          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
+       </Col>
 
       </Row>
       <Row>

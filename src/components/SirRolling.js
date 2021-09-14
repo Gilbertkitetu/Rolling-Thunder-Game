@@ -169,6 +169,8 @@ class SirRolling extends React.Component {
       net: netRotation,
       result: result
     });
+
+     this.props.setRollingSResult(this.state.list[this.state.result]);
   };
 
   reset = () => {
