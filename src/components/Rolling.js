@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Row, Col } from 'react-bootstrap';
 
 
 
@@ -18,15 +18,8 @@ class Rolling extends React.Component {
         "12",
         "-12",
         "-1",
-        "-4",
-        "5",
-        "-11",
-        "10",
-        "-6",
-        "-7",
-        "9",
-        "-8",
-        "8"
+        "-4"
+      
     ],
    
     radius: 75, // PIXELS
@@ -139,14 +132,14 @@ class Rolling extends React.Component {
     let randomSpin = Math.floor(Math.random() * 900) + 500;
     this.setState({
       rotate: randomSpin,
-      easeOut: 3,
+      easeOut: 2,
       spinning: true
     });
 
     // calcalute result after wheel stops spinning
     setTimeout(() => {
       this.getResult(randomSpin);
-    }, 3000);
+    }, 2000);
   };
 
   getResult = spin => {
@@ -194,8 +187,12 @@ class Rolling extends React.Component {
   render() {
     return (
       <Card className="spinWheel">
-     
+
+        <Row>
+        <Col sm md={2}>
         <span id="selector">&#9660;</span>
+        </Col>
+        <Col sm md={10}>
         <canvas
           id="wheel2"
           width="500"
@@ -207,7 +204,9 @@ class Rolling extends React.Component {
             }s ease-out`
           }}
         />
+        </Col>
 
+        </Row>
        
         {this.state.spinning ? (
           <Button type="button" id="reset" onClick={this.reset}>
