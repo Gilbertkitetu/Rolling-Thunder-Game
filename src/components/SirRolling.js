@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Button, Card } from 'react-bootstrap';
+import { AiFillThunderbolt } from 'react-icons/ai';
 
 
+import "./styles/sirRolling.css";
 
 class SirRolling extends React.Component {
   state = {
@@ -14,15 +16,8 @@ class SirRolling extends React.Component {
         "12",
         "-12",
         "-1",
-        "-4",
-        "5",
-        "-11",
-        "10",
-        "-6",
-        "-7",
-        "9",
-        "-8",
-        "8"
+        "-4"
+        
     ],
    
     radius: 75, // PIXELS
@@ -185,9 +180,10 @@ class SirRolling extends React.Component {
 
   render() {
     return (
-      <Card className="spinWheel">
+      <Card >
+      <div className="spinWheelS">
      
-        <span id="selector">&#9660;</span>
+        <span id="selector">< AiFillThunderbolt size="80px"/></span>
         <canvas
           id="wheel"
           width="500"
@@ -214,6 +210,8 @@ class SirRolling extends React.Component {
             {/* YOU WON:{"  "} */}
             <span id="result">{this.state.list[this.state.result]}</span>
           </span>
+        </div>
+
         </div>
       </Card>
     );

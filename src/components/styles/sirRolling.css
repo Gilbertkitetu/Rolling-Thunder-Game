@@ -1,0 +1,4 @@
+.spinWheelS{
+    transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+    
+}

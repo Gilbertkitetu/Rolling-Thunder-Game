@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Button, Card, Row, Col } from 'react-bootstrap';
+// import { ArrowRight } from 'react-bootstrap-icons';
+import { AiFillThunderbolt } from 'react-icons/ai';
 
-
-
+import "./styles/rolling.css"
 class Rolling extends React.Component {
   // constructor(props) {
   //   super(props);
@@ -186,13 +187,15 @@ class Rolling extends React.Component {
 
   render() {
     return (
-      <Card className="spinWheel">
+      <Card>
+      <div className="spinWheel">
 
-        <Row>
-        <Col sm md={2}>
-        <span id="selector">&#9660;</span>
-        </Col>
-        <Col sm md={10}>
+        
+        
+        {/* <span id="selector">&#9660;</span> */}
+         <span id="selector"><AiFillThunderbolt size="80px"/></span>
+        
+        
         <canvas
           id="wheel2"
           width="500"
@@ -204,9 +207,9 @@ class Rolling extends React.Component {
             }s ease-out`
           }}
         />
-        </Col>
+       
 
-        </Row>
+        
        
         {this.state.spinning ? (
           <Button type="button" id="reset" onClick={this.reset}>
@@ -223,6 +226,8 @@ class Rolling extends React.Component {
             
             <span id="result">{this.state.list[this.state.result]}</span>
           </span>
+        </div>
+
         </div>
       </Card>
     );
