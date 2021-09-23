@@ -180,10 +180,12 @@ class SirRolling extends React.Component {
 
   render() {
     return (
-      <Card >
+      
       <div className="spinWheelS">
-     
-        <span id="selector">< AiFillThunderbolt size="80px"/></span>
+        <Card style={{backgroundColor: 'transparent', border: 'none', paddingTop: '50px'}}>
+        <span id="selectorS">< AiFillThunderbolt size="80px"/></span>
+        </Card>
+        <Card>
         <canvas
           id="wheel"
           width="500"
@@ -195,6 +197,7 @@ class SirRolling extends React.Component {
             }s ease-out`
           }}
         />
+        </Card>
 
         {this.state.spinning ? (
           <Button type="button" id="reset" onClick={this.reset}>
@@ -213,7 +216,7 @@ class SirRolling extends React.Component {
         </div>
 
         </div>
-      </Card>
+      
     );
   }
 }

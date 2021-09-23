@@ -187,17 +187,18 @@ class Rolling extends React.Component {
 
   render() {
     return (
-      <Card>
+      
       <div className="spinWheel">
 
         
-        <Row >
-        <Col  >
-        {/* <span id="selector">&#9660;</span> */}
-         <span id="selector" ><AiFillThunderbolt size="80px"/></span>
-         </Col>
         
-        <Col>
+        {/* <span id="selector">&#9660;</span> */}
+        <Card style={{backgroundColor: 'transparent', border: 'none', paddingTop: '50px'}}>
+         <span id="selector" ><AiFillThunderbolt size="80px"/></span>
+         </Card>
+         
+        
+        <Card>
         <canvas
           id="wheel2"
           width="500"
@@ -209,8 +210,9 @@ class Rolling extends React.Component {
             }s ease-out`
           }}
         />
-        </Col>
-        </Row>
+        </Card>
+        
+        
        
 
         
@@ -233,7 +235,7 @@ class Rolling extends React.Component {
         </div>
 
         </div>
-      </Card>
+      
     );
   }
 }

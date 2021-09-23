@@ -50,7 +50,7 @@ function spinBoth () {
           </Card>
       </Col>
 
-      <Col sm md={4} xs={4}>
+      <Col sm md={4} xs={4} >
       <SirRolling setRollingSResult = { setRollingSResult } spin = {spin}/>
       </Col>
       
@@ -58,9 +58,9 @@ function spinBoth () {
       <Rolling setRollingResult={ setRollingResult } spinWheels = {spin}/>
       </Col>
       
-       <Col sm md={2} xs={2}>
+       <Col sm md={2} xs={2} >
          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}}>Spin</Button>
-          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
+          <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
 
            <Card>
           <Card.Title>
