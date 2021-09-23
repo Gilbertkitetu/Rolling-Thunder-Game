@@ -17,10 +17,16 @@ const [spin, setSpin] = useState(false);
 
 //alert(rollingResult);
 //alert(rollingSResult)
+function startSpins (spinning) {
+  spinning = true
+}
 
 function spinBoth () {
     setSpin(true)
     computeResults2()
+    if(spin){
+      startSpins()
+    }
 }
 
 //for player 2
@@ -62,11 +68,11 @@ function computeResults(){
       </Col>
 
       <Col sm md={4} xs={4} >
-      <SirRolling setRollingSResult = { setRollingSResult } spin = {spin}/>
+      <SirRolling setRollingSResult = { setRollingSResult } startSpins= {startSpins()}/>
       </Col>
       
        <Col sm md={4} xs={4}>
-      <Rolling setRollingResult={ setRollingResult } spinWheels = {spin}/>
+    <Rolling setRollingResult={ setRollingResult } startSpins = { startSpins() }/>
       </Col>
       
        <Col sm md={2} xs={2} >

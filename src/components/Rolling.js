@@ -47,6 +47,9 @@ class Rolling extends React.Component {
       angle: arcSize
     });
 
+    // this.props.startSpins(this.state.list[this.state.spinning]);
+
+    
     // get index of starting position of selector
     this.topPosition(numOptions, arcSize);
 
@@ -127,6 +130,7 @@ class Rolling extends React.Component {
     return `rgba(${r},${g},${b},0.4)`;
   }
 
+ 
   spin = () => {
     // set random spin degree and ease out time
     // set state variables to initiate animation
