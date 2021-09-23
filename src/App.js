@@ -37,8 +37,9 @@ function spinBoth () {
       <Row className="justify-content-md-center">
 
       <Col sm md={2} xs={2}>
-         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} onClick={ spinBoth}>Spin</Button>
-          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
+      <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >{ rollingSResult }</Button>
+         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} onClick={ spinBoth}>Spin</Button>
+          <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >Reset</Button>
 
           <Card>
           <Card.Title>
@@ -59,8 +60,9 @@ function spinBoth () {
       </Col>
       
        <Col sm md={2} xs={2} >
-         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "30px"}}>Spin</Button>
-          <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "30px"}} >Reset</Button>
+       <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >{ rollingResult }</Button>
+         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} onClick={ spinBoth}>Spin</Button>
+          <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >Reset</Button>
 
            <Card>
           <Card.Title>
