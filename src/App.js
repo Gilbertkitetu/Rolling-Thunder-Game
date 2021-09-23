@@ -14,19 +14,29 @@ const [player1Results, setPlayer1Results] = useState(0);
 const [player2Results, setPlayer2Results] = useState(0);
 const [spin, setSpin] = useState(false);
 
+
 //alert(rollingResult);
 //alert(rollingSResult)
 
 function spinBoth () {
     setSpin(true)
+    computeResults2()
+}
+
+//for player 2
+function spinBoth2 () {
+  setSpin(true)
     computeResults()
 }
 
-  function computeResults(){
+function computeResults(){
+  var results = +rollingResult + +rollingSResult;
+  setPlayer1Results(results)
+}
+
+  function computeResults2(){
     var results = +rollingResult + +rollingSResult;
-    alert(results)
-    setPlayer1Results(results)
-    return results;
+    setPlayer2Results(results)
   }
 
   return (
@@ -38,7 +48,7 @@ function spinBoth () {
 
       <Col sm md={2} xs={2}>
       <Button variant="secondary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >{ rollingSResult }</Button>
-         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} onClick={ spinBoth}>Spin</Button>
+         <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} onClick={ spinBoth2 }>Spin</Button>
           <Button variant="primary" size="lg" w-100 style={{ width: "150px", margin: "10px"}} >Reset</Button>
 
           <Card>
