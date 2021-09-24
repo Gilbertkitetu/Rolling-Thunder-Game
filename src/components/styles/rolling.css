@@ -1,10 +1,14 @@
 .spinWheel{
     transform: rotate(-90deg); /* Equal to rotateZ(45deg) */
+}
     
+
+#wheel2{
 }
 
 #selector{
     
     background-color: transparent;
+    
     
 }

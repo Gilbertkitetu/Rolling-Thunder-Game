@@ -32,7 +32,9 @@ function spinBoth () {
 //for player 2
 function spinBoth2 () {
   setSpin(true)
+  
     computeResults()
+
 }
 
 function computeResults(){

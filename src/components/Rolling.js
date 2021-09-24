@@ -1,68 +1,80 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import { Button, Card, Row, Col } from 'react-bootstrap';
 // import { ArrowRight } from 'react-bootstrap-icons';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
 import "./styles/rolling.css"
-class Rolling extends React.Component {
+function Rolling  (props) {
   // constructor(props) {
   //   super(props);
   //   this.rollingResultF = this.rollingResultF.bind(this);
   // }
-  state = {
-    list: [
-        "0",
-        "-10",
-        "-5",
-        "6",
-        "12",
-        "-12",
-        "-1",
-        "-4"
-      
-    ],
-   
-    radius: 75, // PIXELS
-    rotate: 180, // DEGREES
-    easeOut: 0, // SECONDS
-    angle: 0, // RADIANS
-    top: null, // INDEX
-    offset: null, // RADIANS
-    net: null, // RADIANS
-    result: null, // INDEX
-    spinning: false
-  };
 
-  componentDidMount() {
-    // generate canvas wheel on load
-    this.renderWheel();
+  function startSpining() {
+    spin()
   }
 
-  renderWheel() {
+ 
+
+const [state, setState] = useState({
+  list: [
+      "0",
+      "-10",
+      "-5",
+      "6",
+      "12",
+      "-12",
+      "-1",
+      "-4"
+    
+  ],
+ 
+  radius: 75, // PIXELS
+  rotate: 180, // DEGREES
+  easeOut: 0, // SECONDS
+  angle: 0, // RADIANS
+  top: null, // INDEX
+  offset: null, // RADIANS
+  net: null, // RADIANS
+  result: null, // INDEX
+  spinning: false,
+  start: false
+});
+  
+
+
+  useEffect ( () => {
+    // generate canvas wheel on load
+    renderWheel();
+  }
+  )
+
+  function renderWheel() {
     // determine number/size of sectors that need to created
-    let numOptions = this.state.list.length;
+    //var l = state.list;
+    let numOptions = state.list.length;
     let arcSize = (2 * Math.PI) / numOptions;
-    this.setState({
+    setState({
       angle: arcSize
     });
 
-    // this.props.startSpins(this.state.list[this.state.spinning]);
+     
 
-    
+
     // get index of starting position of selector
-    this.topPosition(numOptions, arcSize);
+    topPosition(numOptions, arcSize);
 
     // dynamically generate sectors from state list
     let angle = 0;
     for (let i = 0; i < numOptions; i++) {
-      let text = this.state.list[i];
-      this.renderSector(i + 1, text, angle, arcSize, this.getColor());
+      let text = state.list[i];
+      renderSector(i + 1, text, angle, arcSize, getColor());
       angle += arcSize;
     }
   }
 
-  topPosition = (num, angle) => {
+  var topPosition = (num, angle) => {
     // set starting index and angle offset based on list length
     // works upto 9 options
     let topSpot = null;
@@ -84,19 +96,19 @@ class Rolling extends React.Component {
       degreesOff = Math.PI / 2;
     }
 
-    this.setState({
+    setState({
       top: topSpot - 1,
       offset: degreesOff
     });
   };
 
-  renderSector(index, text, start, arc, color) {
+  function renderSector(index, text, start, arc, color) {
     // create canvas arc for each list element
     let canvas = document.getElementById("wheel2");
     let ctx = canvas.getContext("2d");
     let x = canvas.width / 2;
     let y = canvas.height / 2;
-    let radius = this.state.radius;
+    let radius = state.radius;
     let startAngle = start;
     let endAngle = start + arc;
     let angle = index * arc;
@@ -122,7 +134,7 @@ class Rolling extends React.Component {
     ctx.restore();
   }
 
-  getColor() {
+  function getColor() {
     // randomly generate rbg values for wheel sectors
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
@@ -130,12 +142,12 @@ class Rolling extends React.Component {
     return `rgba(${r},${g},${b},0.4)`;
   }
 
- 
-  spin = () => {
+
+  var spin = () => {
     // set random spin degree and ease out time
     // set state variables to initiate animation
     let randomSpin = Math.floor(Math.random() * 900) + 500;
-    this.setState({
+    setState({
       rotate: randomSpin,
       easeOut: 2,
       spinning: true
@@ -143,15 +155,15 @@ class Rolling extends React.Component {
 
     // calcalute result after wheel stops spinning
     setTimeout(() => {
-      this.getResult(randomSpin);
+      getResult(randomSpin);
     }, 2000);
   };
 
-  getResult = spin => {
+  var getResult = spin => {
     // find next rotation and add to offset angle
     // repeat substraction of inner angle amount from total distance traversed
     // use count as an index to find value of result from state list
-    const { angle, top, offset, list } = this.state;
+    const { angle, top, offset, list } = state;
     let netRotation = ((spin % 360) * Math.PI) / 180; // RADIANS
     let travel = netRotation + offset;
     let count = top + 1;
@@ -171,15 +183,15 @@ class Rolling extends React.Component {
      
 
     // set state variable to display result
-    this.setState({
+    setState({
       net: netRotation,
       result: result
     });
     
-    this.props.setRollingResult(this.state.list[this.state.result]);
+    props.setRollingResult(state.list[state.result]);
   };
 
-  reset = () => {
+   var reset = () => {
     // reset wheel and result
     this.setState({
       rotate: 180,
@@ -189,7 +201,7 @@ class Rolling extends React.Component {
     });
   };
 
-  render() {
+  
     return (
       
       <div className="spinWheel">
@@ -208,9 +220,9 @@ class Rolling extends React.Component {
           width="500"
           height="500"
           style={{
-            WebkitTransform: `rotate(${this.state.rotate}deg)`,
+            WebkitTransform: `rotate(${state.rotate}deg)`,
             WebkitTransition: `-webkit-transform ${
-              this.state.easeOut
+              state.easeOut
             }s ease-out`
           }}
         />
@@ -221,27 +233,27 @@ class Rolling extends React.Component {
 
         
        
-        {this.state.spinning ? (
-          <Button type="button" id="reset" onClick={this.reset}>
+        {state.spinning ? (
+          <Button type="button" id="reset" onClick={reset}>
             reset
           </Button>
         ) : (
          
-          <Button type="button" id="spin" onClick={this.spin}>
+          <Button type="button" id="spin" onClick={spin}>
             spin
           </Button>
         )}
         <div class="display">
           <span id="readout">
             
-            <span id="result">{this.state.list[this.state.result]}</span>
+            <span id="result">{state.result}</span>
           </span>
         </div>
 
         </div>
       
     );
-  }
+  
 }
 
 export default Rolling;
