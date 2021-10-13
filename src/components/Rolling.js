@@ -18,20 +18,9 @@ function Rolling  (props) {
  
 
 const [state, setState] = useState({
-  list: [
-      "0",
-      "-10",
-      "-5",
-      "6",
-      "12",
-      "-12",
-      "-1",
-      "-4"
-    
-  ],
- 
+  
   radius: 75, // PIXELS
-  rotate: 180, // DEGREES
+  rotate: 0, // DEGREES
   easeOut: 0, // SECONDS
   angle: 0, // RADIANS
   top: null, // INDEX
@@ -41,6 +30,8 @@ const [state, setState] = useState({
   spinning: false,
   start: false
 });
+
+var list = ["0","-10","-5","6","12","-12","-1","-4"];
   
 
 
@@ -53,7 +44,7 @@ const [state, setState] = useState({
   function renderWheel() {
     // determine number/size of sectors that need to created
     //var l = state.list;
-    let numOptions = state.list.length;
+    let numOptions = list.length;
     let arcSize = (2 * Math.PI) / numOptions;
     setState({
       angle: arcSize
@@ -68,7 +59,7 @@ const [state, setState] = useState({
     // dynamically generate sectors from state list
     let angle = 0;
     for (let i = 0; i < numOptions; i++) {
-      let text = state.list[i];
+      let text = list[i];
       renderSector(i + 1, text, angle, arcSize, getColor());
       angle += arcSize;
     }
@@ -144,14 +135,18 @@ const [state, setState] = useState({
 
 
   var spin = () => {
+    
     // set random spin degree and ease out time
     // set state variables to initiate animation
     let randomSpin = Math.floor(Math.random() * 900) + 500;
+    alert(randomSpin)
     setState({
       rotate: randomSpin,
       easeOut: 2,
       spinning: true
     });
+    alert(state.rotate)
+    alert(state.easeOut)
 
     // calcalute result after wheel stops spinning
     setTimeout(() => {
@@ -188,7 +183,7 @@ const [state, setState] = useState({
       result: result
     });
     
-    props.setRollingResult(state.list[state.result]);
+    props.setRollingResult(state.result);
   };
 
    var reset = () => {
@@ -233,16 +228,16 @@ const [state, setState] = useState({
 
         
        
-        {state.spinning ? (
+        {state.spinning ? 
           <Button type="button" id="reset" onClick={reset}>
             reset
           </Button>
-        ) : (
+         : 
          
-          <Button type="button" id="spin" onClick={spin}>
+          <Button type="button" id="spin" onClick={(e) => {spin()}}>
             spin
           </Button>
-        )}
+        }
         <div class="display">
           <span id="readout">
             
