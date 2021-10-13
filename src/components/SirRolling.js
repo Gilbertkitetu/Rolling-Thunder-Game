@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Button, Card } from 'react-bootstrap';
 import { AiFillThunderbolt } from 'react-icons/ai';
@@ -35,6 +35,9 @@ class SirRolling extends React.Component {
     // generate canvas wheel on load
     this.renderWheel();
   }
+  // useEffect(){
+  //   this.renderWheel();
+  // }
 
   renderWheel() {
     // determine number/size of sectors that need to created
